@@ -1,0 +1,46 @@
+<h1>Change Detection</h1>
+
+<div>
+    {{ test("inside test 1") }}
+    <h2>Test 1 - Separate Observables</h2>
+    <button (click)="incrementCounter3()">Increment Counter 1</button>
+    <button (click)="incrementCounter4()">Increment Counter 2</button>
+    <div>
+        {{ test("[test1] outside counter 1") }}
+        <div>{{ counter3$ | async }} {{ test("[test1] inside counter 1") }}</div>
+    </div>
+    <div>
+        {{ test("[test1] outside counter 2") }}
+        <div>{{ counter4$ | async }} {{ test("[test1] inside counter 2") }}</div>
+    </div>
+</div>
+
+<div *ngIf="data$ | async as data">
+    {{ test("inside test 2") }}
+    <h2>Test 2 - Combined Observables</h2>
+    <button (click)="incrementCounter1()">Increment Counter 1</button>
+    <button (click)="incrementCounter2()">Increment Counter 2</button>
+    <div>
+        {{ test("[test2] outside counter 1") }}
+        <div>{{ data.counter1 }} {{ test("[test2] inside counter 1") }}</div>
+    </div>
+    <div>
+        {{ test("[test2] outside counter 2") }}
+        <div>{{ data.counter2 }} {{ test("[test2] inside counter 2") }}</div>
+    </div>
+</div>
+
+<div>
+    {{ test("inside test 3") }}
+    <h2>Test 3 - Signals</h2>
+    <button (click)="incrementCounter1Signal()">Increment Counter 1</button>
+    <button (click)="incrementCounter2Signal()">Increment Counter 2</button>
+    <div>
+        {{ test("[test3] outside counter 1") }}
+        <div>{{ counter1Signal() }} {{ test("[test3] inside counter 1") }}</div>
+    </div>
+    <div>
+        {{ test("[test3] outside counter 2") }}
+        <div>{{ counter2Signal() }} {{ test("[test3] inside counter 2") }}</div>
+    </div>
+</div>

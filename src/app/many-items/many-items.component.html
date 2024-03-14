@@ -1,0 +1,11 @@
+
+<div style="display: grid; grid-template-columns: repeat(20, 1fr); gap: 2px;">
+    @for (item of items; track item.id) {
+        <div style="
+            height: 50px; background-color: slateblue; border: 3px solid black;
+            display: flex; justify-content: center; align-items: center;"
+        >
+            {{ item.name }}
+        </div>
+    }
+</div>
